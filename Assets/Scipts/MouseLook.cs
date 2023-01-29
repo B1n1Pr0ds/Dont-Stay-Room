@@ -7,20 +7,17 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    [SerializeField] float mouseSensitivity = 100f;
+    [SerializeField] float sensitivity = StaticVariables.mouseSensitivity;
     [SerializeField] Transform PlayerBody;
 
     private float xRotation = 0f;
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+    
 
     
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
         
         xRotation -= mouseY;

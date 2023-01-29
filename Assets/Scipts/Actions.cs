@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 
@@ -10,7 +11,9 @@ public class Actions : MonoBehaviour
     [SerializeField] Behaviour[] tPView; //components of the third person view;
     [SerializeField] Behaviour[] fPView; //components of the first person view
     public bool pov;
+    
 
+    [SerializeField] private GameManager gameManager;
 
     [Header("Use Button")]
     [SerializeField] private TextMeshProUGUI useText;
@@ -18,7 +21,7 @@ public class Actions : MonoBehaviour
     [SerializeField] private float MaxUseDistance;
     [SerializeField] private LayerMask useLayers;
 
-
+    
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.F))
@@ -58,6 +61,11 @@ public class Actions : MonoBehaviour
         else
         {
             useText.gameObject.SetActive(false);
+        }
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene(0);
         }
     }
     void ItemInteract()
@@ -100,5 +108,6 @@ public class Actions : MonoBehaviour
     {
         pov = !pov;
     }
-    
+
+   
 }
